@@ -27,7 +27,6 @@ si.networkInterfaces().then(data => {
     defaultNetwork = data.filter(networkInterface => networkInterface.iface === defaultNetwork)[0];
 });
 
-
 setInterval(function() {
     si.networkStats().then(data => {
         if(totalDownload.length > maxValueOfArray){
@@ -41,6 +40,10 @@ setInterval(function() {
         totalDownloadSize += data[0].rx_sec;
         totalUploadSize += data[0].tx_sec;
 
+        console.clear();
+
+        console.log (asciichart.plot ([ totalDownload, totalUpload ], config) + '\n')
+
         console.log('       ' + chalk.green( '▶ ' + defaultNetwork?.iface + ' ') + chalk.keyword('orange')( '▶ ' + defaultNetwork?.ip4 + ' ') 
         + chalk.yellowBright( '▶ ' + defaultNetwork?.mac + ' ') + chalk.blue( '▶ ' + defaultNetwork?.type + ' '));
 
@@ -48,16 +51,9 @@ setInterval(function() {
 
         console.log('       ' + chalk.blue('Download: ' + bytesToSize(data[0].rx_sec)) + chalk.green( ' Upload: ' + bytesToSize(data[0].tx_sec)));
         console.log('       ' + chalk.blue('Total Download: ' + bytesToSize(totalDownloadSize) + chalk.green( ' Total Upload: ' + bytesToSize(totalUploadSize))));
+        console.log('       ' + chalk.blue(notifierText + ' download')  + ' ' + chalk.green(notifierText + ' upload') );
         
-
-
     });
-    
-    console.clear();
-    console.log('       ' + chalk.blue(notifierText + ' download')  + ' ' + chalk.green(notifierText + ' upload') );
-    console.log (asciichart.plot ([ totalDownload, totalUpload ], config) + '\n')
-   
-   
 }, 1000)
 
 
