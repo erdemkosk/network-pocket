@@ -1,10 +1,10 @@
 # Welcome to network-pocket 👋
-![Version](https://img.shields.io/badge/version-1.0.5-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.0.6-blue.svg?cacheSeconds=2592000)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/erdemkosk/quiz_api/graphs/commit-activity)
 
 > This is cli tool for sniffing your network and monitor to rx and tx packages from network.
 
-[![Network-pocket](https://i.ibb.co/G94Zy9z/Screen-Shot-2021-08-25-at-15-07-50.png)]
+[![Network-pocket](https://i.ibb.co/NmM5FPv/Screen-Shot-2021-08-25-at-15-07-50-1.png)]
 
 ## Install
 
