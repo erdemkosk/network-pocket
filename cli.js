@@ -42,6 +42,8 @@ setInterval(function() {
 
         console.clear();
 
+        console.log('       ' + chalk.blue(notifierText + ' download')  + ' ' + chalk.green(notifierText + ' upload') );
+
         console.log (asciichart.plot ([ totalDownload, totalUpload ], config) + '\n')
 
         console.log('       ' + chalk.green( '▶ ' + defaultNetwork?.iface + ' ') + chalk.keyword('orange')( '▶ ' + defaultNetwork?.ip4 + ' ') 
@@ -51,7 +53,6 @@ setInterval(function() {
 
         console.log('       ' + chalk.blue('Download: ' + bytesToSize(data[0].rx_sec)) + chalk.green( ' Upload: ' + bytesToSize(data[0].tx_sec)));
         console.log('       ' + chalk.blue('Total Download: ' + bytesToSize(totalDownloadSize) + chalk.green( ' Total Upload: ' + bytesToSize(totalUploadSize))));
-        console.log('       ' + chalk.blue(notifierText + ' download')  + ' ' + chalk.green(notifierText + ' upload') );
         
     });
 }, 1000)
