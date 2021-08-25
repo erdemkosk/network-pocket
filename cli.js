@@ -1,9 +1,11 @@
 #!/usr/bin/env node
-
 const si = require('systeminformation');
 const asciichart = require ('asciichart');
 const chalk = require('chalk');
 const notifierText = '■';
+const updateNotifier = require('update-notifier');
+const pkg = require('./package.json');
+
 
 const totalDownload = [0];
 const totalUpload = [0];
@@ -22,10 +24,20 @@ var config = {
     min:1,
 }
 
+updateNotifier({
+	pkg: {
+		name: pkg.name,
+		version: pkg.version,
+	},
+	updateCheckInterval: 0
+}).notify();
+
+
 si.networkInterfaceDefault().then(data => defaultNetwork = data);
 si.networkInterfaces().then(data => {
     defaultNetwork = data.filter(networkInterface => networkInterface.iface === defaultNetwork)[0];
 });
+
 
 setInterval(function() {
     si.networkStats().then(data => {
