@@ -1,8 +1,10 @@
 # Welcome to network-pocket 👋
-![Version](https://img.shields.io/badge/version-1.0.9-blue.svg?cacheSeconds=2592000)
+![Version](https://img.shields.io/badge/version-1.0.10-blue.svg?cacheSeconds=2592000)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/erdemkosk/quiz_api/graphs/commit-activity)
 
 > This is cli tool for sniffing your network and monitor to rx and tx packages from network.
+
+I created packages for a small side project because of ı need a kind of tool. This tool controlling rx and tx your internet connection so we can understand internet connection is gone or some apps using our network.
 
 [![Network-pocket](https://i.ibb.co/yQ9j2Qb/network-pocket.png)]
 
