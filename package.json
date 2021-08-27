@@ -1,6 +1,6 @@
 {
   "name": "network-pocket",
-  "version": "1.0.10",
+  "version": "1.0.11",
   "description": "This is cli tool for sniffing your network and monitor to rx and tx packages from network.",
   "main": "cli.js",
   "scripts": {
@@ -13,6 +13,7 @@
   },
   "dependencies": {
     "asciichart": "^1.5.25",
+    "boxen": "^5.0.1",
     "chalk": "^4.1.2",
     "systeminformation": "^5.8.0",
     "update-notifier": "^5.1.0"

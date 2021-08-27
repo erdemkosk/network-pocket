@@ -5,6 +5,7 @@ const chalk = require('chalk');
 const notifierText = '■';
 const updateNotifier = require('update-notifier');
 const pkg = require('./package.json');
+const boxen = require('boxen');
 
 
 const totalDownload = [0];
@@ -24,13 +25,13 @@ var config = {
     min:1,
 }
 
-updateNotifier({
+const notifier = updateNotifier({
 	pkg: {
 		name: pkg.name,
 		version: pkg.version,
 	},
 	updateCheckInterval: 0
-}).notify();
+});
 
 
 si.networkInterfaceDefault().then(data => defaultNetwork = data);
@@ -65,6 +66,11 @@ setInterval(function() {
 
         console.log('       ' + chalk.blue('Download: ' + bytesToSize(data[0].rx_sec)) + chalk.green( ' Upload: ' + bytesToSize(data[0].tx_sec)));
         console.log('       ' + chalk.blue('Total Download: ' + bytesToSize(totalDownloadSize) + chalk.green( ' Total Upload: ' + bytesToSize(totalUploadSize))));
+        if (notifier.update) {
+            console.log(boxen('Update available ' + pkg.version + ' → ' + chalk.green(notifier.update.latest) + '\n' + 'Run ' + chalk.blue('npm i -g network-pocket') +
+             ' to update after terminate network-pocket' , {align: 'center' , margin:{left: 7} , borderColor: 'green' }));
+   
+        }
         
     });
 }, 1000)
