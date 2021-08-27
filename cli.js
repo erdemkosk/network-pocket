@@ -30,7 +30,9 @@ const notifier = updateNotifier({
 		name: pkg.name,
 		version: pkg.version,
 	},
-	updateCheckInterval: 0
+	isGlobal:true,
+    shouldNotifyInNpmScript: true,
+    updateCheckInterval: 0,
 });
 
 
@@ -66,7 +68,7 @@ setInterval(function() {
 
         console.log('       ' + chalk.blue('Download: ' + bytesToSize(data[0].rx_sec)) + chalk.green( ' Upload: ' + bytesToSize(data[0].tx_sec)));
         console.log('       ' + chalk.blue('Total Download: ' + bytesToSize(totalDownloadSize) + chalk.green( ' Total Upload: ' + bytesToSize(totalUploadSize))));
-        if (notifier.update && notifier.update.latest > pkg.version) {
+        if (notifier.update ) {
             console.log(boxen('Update available ' + pkg.version + ' → ' + chalk.green(notifier.update.latest) + '\n' + 'Run ' + chalk.blue('npm i -g network-pocket') +
              ' to update after terminate network-pocket' , {align: 'center' , margin:{left: 7} , borderColor: 'green' }));
    
