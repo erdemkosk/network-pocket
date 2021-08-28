@@ -6,17 +6,23 @@ const notifierText = '■';
 const updateNotifier = require('update-notifier');
 const pkg = require('./package.json');
 const boxen = require('boxen');
-
+const beeper = require('beeper');
+const cliCursor = require('cli-cursor');
 
 const totalDownload = [0];
 const totalUpload = [0];
+const maxValueOfArray = 60;
+const maxBeepCount = 6;
+
 let totalDownloadSize = 0;
 let totalUploadSize = 0;
 let defaultNetwork;
+let beepCount=1;
 
-const maxValueOfArray = 60;
+cliCursor.hide();
 
-var config = {
+
+const config = {
     colors: [
         asciichart.blue,
         asciichart.green,
@@ -34,7 +40,6 @@ const notifier = updateNotifier({
     shouldNotifyInNpmScript: true,
     updateCheckInterval: 0,
 });
-
 
 si.networkInterfaceDefault().then(data => defaultNetwork = data);
 si.networkInterfaces().then(data => {
@@ -64,7 +69,17 @@ setInterval(function() {
         console.log('       ' + chalk.green( '▶ ' + defaultNetwork?.iface + ' ') + chalk.keyword('orange')( '▶ ' + defaultNetwork?.ip4 + ' ') 
         + chalk.yellowBright( '▶ ' + defaultNetwork?.mac + ' ') + chalk.blue( '▶ ' + defaultNetwork?.type + ' '));
 
-        data[0].operstate === 'up' ? console.log('       ' + chalk.whiteBright('Status : ') + chalk.yellowBright( data[0].operstate)) : console.log('       ' + chalk.whiteBright('Status : ') + chalk.redBright( data[0].operstate));
+        if(data[0].operstate !== 'up'){
+            console.log('       ' + chalk.whiteBright('Status : ') + chalk.redBright( data[0].operstate));
+            if(beepCount % maxBeepCount !== 0){
+                beeper();
+                beepCount ++;
+            }
+        }
+        else{
+            console.log('       ' + chalk.whiteBright('Status : ') + chalk.yellowBright( data[0].operstate))
+            beepCount=1;
+        }
 
         console.log('       ' + chalk.blue('Download: ' + bytesToSize(data[0].rx_sec)) + chalk.green( ' Upload: ' + bytesToSize(data[0].tx_sec)));
         console.log('       ' + chalk.blue('Total Download: ' + bytesToSize(totalDownloadSize) + chalk.green( ' Total Upload: ' + bytesToSize(totalUploadSize))));

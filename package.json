@@ -13,8 +13,10 @@
   },
   "dependencies": {
     "asciichart": "^1.5.25",
+    "beeper": "^2.1.0",
     "boxen": "^5.0.1",
     "chalk": "^4.1.2",
+    "cli-cursor": "^3.1.0",
     "systeminformation": "^5.8.0",
     "update-notifier": "^5.1.0"
   },
