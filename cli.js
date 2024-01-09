@@ -23,7 +23,7 @@ cliCursor.hide();
 
 const config = {
     colors: [
-        asciichart.blue,
+        asciichart.lightblue,
         asciichart.green,
     ],
     height:  10,
@@ -66,7 +66,7 @@ setInterval(function() {
         console.log (asciichart.plot ([ totalDownload, totalUpload ], config) + '\n')
 
         console.log('       ' + chalk.green( '▶ ' + defaultNetwork?.iface + ' ') + chalk.keyword('orange')( '▶ ' + defaultNetwork?.ip4 + ' ') 
-        + chalk.yellowBright( '▶ ' + defaultNetwork?.mac + ' ') + chalk.blue( '▶ ' + defaultNetwork?.type + ' '));
+        + chalk.yellowBright( '▶ ' + defaultNetwork?.mac + ' ') + chalk.redBright( '▶ ' + defaultNetwork?.type + ' '));
 
         if(data[0].operstate !== 'up'){
             console.log('       ' + chalk.whiteBright('Status : ') + chalk.redBright( data[0].operstate));
