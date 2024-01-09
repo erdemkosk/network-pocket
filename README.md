@@ -1,36 +1,40 @@
-# Welcome to network-pocket 👋
-![Version](https://img.shields.io/badge/version-1.0.15-blue.svg?cacheSeconds=2592000)
-[![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/erdemkosk/quiz_api/graphs/commit-activity)
+# Network Pocket
 
-> This is cli tool for sniffing your network and monitor to rx and tx packages from network.
+ ![Logo](https://imgur.com/huejlyk.gif)
 
-I created packages for a small side project because of ı need a kind of tool. This tool controlling rx and tx your internet connection so we can understand internet connection is gone or some apps using our network.
+## Overview
+The `network-pocket` is a command-line tool built with Node.js. It provides real-time monitoring of network statistics, including download and upload speeds, network interface information, and update notifications.
 
-[![Network-pocket](https://i.ibb.co/yQ9j2Qb/network-pocket.png)]
+## Features
+- **Real-time Monitoring**: Constantly displays download and upload speeds in a graphical ASCII chart.
+- **Network Interface Details**: Shows details about the default network interface such as IP address, MAC address, and type.
+- **Status Notifications**: Provides status notifications when the network state changes.
+- **Update Notifications**: Alerts the user about available updates for the tool.
 
-## Install
+## Dependencies
+- `systeminformation`: Fetches system and network information.
+- `asciichart`: Generates ASCII charts for visual representation.
+- `chalk`: Adds color styles to the console output.
+- `update-notifier`: Checks for updates and notifies the user.
+- `boxen`: Creates a colored box for update notifications.
+- `beeper`: Generates system beeps for notifications.
+- `cli-cursor`: Manages the visibility of the cursor in the command line interface.
 
-```sh
-npm install -g network-pocket
+## Functionality
+The tool initializes by fetching default network interface information and starts continuously monitoring network statistics using `systeminformation`. The key functionalities include:
+- **Graphical Representation**: Utilizes `asciichart` to create graphical representations of download and upload speeds in real-time.
+- **Network Interface Display**: Presents detailed information about the default network interface including IP address, MAC address, and type.
+- **Status Updates**: Notifies the user of changes in network status (e.g., "up" or "down") and triggers system beeps for attention.
+- **Update Alerts**: Utilizes `update-notifier` to check for available updates and displays notifications when updates are available.
 
-```
 ## Usage
-```sh
-network-pocket
-```
+1. Install the tool: `npm install -g network-pocket`
+2. Run the tool in the terminal: `network-pocket`
 
-## Author
+## Future Improvements
+- Adding additional statistical metrics.
+- Enhancing user interface for better interaction.
+- Supporting more customization options.
 
-👤 **Mustafa Erdem Köşk**
+---
 
-* Website: http://www.erdemkosk.com
-* Twitter: [@erdemkosksk](https://twitter.com/erdemkosksk)
-* Github: [@erdemkosk](https://github.com/erdemkosk)
-* LinkedIn: [@erdemkosk](https://linkedin.com/in/erdemkosk)
-
-
-## 📝 License
-
-Copyright © 2021 [Mustafa Erdem Köşk <erdemkosk@gmail.com>](https://github.com/erdemkosk).
-
-This project is [MIT](https://github.com/erdemkosk/quiz_api/blob/master/LICENSE) licensed.
